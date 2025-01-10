@@ -1,0 +1,79 @@
+Press Ctrl+Enter to execute query
+insert INTO ruchi.users (password,name) values('1234','rupesh');
+insert into ruchi.users VALUES (null,'rishabh','rishabh@gmail.com','134'), (null,'ruchita','ruchita@gmail.com','234'), (null,'manan','manan@gmail.com','534');
+#most used query;
+SELECT * FROM `users`
+SELECT * FROM `smartphones`
+SELECT * FROM `users`
+SELECT * FROM `smartphones`
+SELECT * FROM `smartphones`
+SELECT * FROM `smartphones`
+drop table smartphones;
+SELECT * FROM `smartphones_cleaned_v6`
+SELECT * FROM `smartphones_cleaned_v6`
+SELECT * FROM `smartphones_cleaned_v6`
+SELECT * FROM `smartphones_cleaned_v6`
+SELECT * FROM `smartphones_cleaned_v6` ORDER BY `smartphones_cleaned_v6`.`COL 1` ASC
+SELECT * FROM `smartphones_cleaned_v6` ORDER BY `smartphones_cleaned_v6`.`COL 1` DESC
+SELECT * FROM `smartphones_cleaned_v6`
+SELECT * FROM `smartphones_cleaned_v6` ORDER BY `smartphones_cleaned_v6`.`COL 1` ASC
+SELECT * FROM `smartphones_cleaned_v6`
+drop table smartphones_cleaned_v6;
+SELECT * FROM `smartphones`
+SELECT * FROM ruchi.smartphones WHERE 1#* means all cols and 1 row);
+SELECT * FROM `smartphones` WHERE 1# where 1 is optional(this command chooses all the rows and cols);
+select model,price,rating from ruchi.smartphones;
+select model,battery_capacity from ruchi.smartphones;
+#renmae columns select os as 'Operating Sysytem',model,battery_capacity as 'mAH' from ruchi.smartphones;
+select os as 'Operating Sysytem',model,battery_capacity as 'mAH' from ruchi.smartphones ORDER BY `mAH` ASC
+select os as 'Operating Sysytem',model,battery_capacity as 'mAH' from ruchi.smartphones ORDER BY `mAH` DESC
+#create expression using cols=using 3 cols fing ppi=(m**2 +h**2)**0.5 / screen_size SELECT model,SQRT(resolution_height*resolution_height + resolution_width*resolution_width) from ruchi.smartphones;
+#create expression using cols=using 3 cols fing ppi=(m**2 +h**2)**0.5 / screen_size SELECT model,SQRT(resolution_height*resolution_height + resolution_width*resolution_width)/screen_size as ppi from ruchi.smartphones;
+#constants select model, 'smartphone' as 'type' from ruchi.smartphones #col name as type and the values will be constant as smartphone;
+#distinct =unique values SELECT DISTINCT(brand_name) as 'All Brands'from ruchi.smartphones;
+select distinct(processor_brand) as 'all processors' from ruchi.smartphones;
+#distinct combination select distinct brand_name,processor_brand from ruchi.smartphones;
+#filter rows based on where clause select * from ruchi.smartphones where brand_name='samsung';
+select * from ruchi.smartphones where price >50000;
+#between select * from ruchi.smartphones where price >10000 and price <20000;
+#between select * from ruchi.smartphones where price between 10000 and 20000;
+select * from ruchi.smartphones where price<25000 and rating>80;
+SELECT * FROM `smartphones` WHERE processor_brand='snapdragon';
+SELECT * FROM `smartphones` WHERE brand_name='samsung' and ram_capacity>8;
+SELECT * FROM `smartphones` WHERE brand_name='samsung' and processor_brand='snapdragon';
+select distinct(brand_name) from ruchi.smartphones where price>50000;
+#in and not in operators select * from ruchi.smartphones where processor_brand='snapdragon' or processor_brand='exyons' or processor_brand='bionic';
+#in and not in operators select * from ruchi.smartphones where processor_brand in('snapdragon','exyons','bionic','dimensity');
+#in and not in operators select * from ruchi.smartphones where processor_brand not in('snapdragon','exyons','bionic','dimensity');
+#update select * from ruchi.smartphones where processor_brand='mediatek';
+#update update ruchi.smartphones set processor_brand='dimensity' where processor_brand='mediatek';
+select * from ruchi.smartphones where processor_brand='dimensity';
+select * from ruchi.smartphones where processor_brand='mediatek';
+#update-set operator update ruchi.users set email='rucha@gmail.com',password='1234567' where name ='ruchi';
+SELECT * FROM `users`
+SELECT * FROM `smartphones`
+#delete operator -selectively deletes the rows select * from ruchi.smartphones WHERE price>200000;
+#delete delete from ruchi.smartphones where price>200000;
+#delete operator -selectively deletes the rows select * from ruchi.smartphones WHERE price>200000;
+delete from ruchi.smartphones WHERE primary_camera_rear>150;
+delete from ruchi.smartphones WHERE primary_camera_rear>100 and brand_name='samsung';
+select max(price) from ruchi.smartphones;
+select max(ram_capacity) from ruchi.smartphones;
+select max(price) from ruchi.smartphones where brand_name='samsung';
+select * from ruchi.smartphones where brand_name='samsung' and price=163980;
+select avg(rating) from ruchi.smartphones where brand_name='apple';
+select sum(price) from ruchi.smartphones;
+select count(*) from ruchi.smartphones WHERE brand_name='samsung';
+#unique conunt=unique distinct select count(distinct(brand_name)) from ruchi.smartphones;
+select std(screen_size) from ruchi.smartphones;
+select variance(screen_size) from ruchi.smartphones;
+#scalar functions select price-100000 as 'temp' from ruchi.smartphones;
+#scalar functions select abs(price-100000) as 'temp' from ruchi.smartphones;
+#did round off and kwpt 2 decimal places;
+select ceil(screen_size) from ruchi.smartphones;
+#svg battery_capacity and avg primary_camera_rear for all smrtphones with a price greater than or eqaul to 100000 select avg(battery_capacity) and avg(primary_camera_rear) from ruchi.smartphones where price<=100000;
+#svg battery_capacity and avg primary_camera_rear for all smrtphones with a price greater than or eqaul to 100000 select avg(battery_capacity) , avg(primary_camera_rear) from ruchi.smartphones where price>=100000;
+#svg battery_capacity and avg primary_camera_rear for all smrtphones with a price greater than or eqaul to 100000 select avg(battery_capacity) as 'avg_battery_capacity' , avg(primary_camera_rear) as 'avg_camera_rear' from ruchi.smartphones where price>=100000;
+#avg internal_memory capacity and avg primary rear camera resolution for all smartphones with a price greater than or = 100000 select avg(internal_memory) as 'avg_internal_memnory_capacity', avg(primary_camera_rear) as 'avg_primary_rear_camera' from ruchi.smartphones where price >=100000;
+select * from ruchi.smartphones;
+select count(*) from ruchi.smartphones where has_5g = 'True';
