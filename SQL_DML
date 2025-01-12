@@ -77,3 +77,24 @@ select ceil(screen_size) from ruchi.smartphones;
 #avg internal_memory capacity and avg primary rear camera resolution for all smartphones with a price greater than or = 100000 select avg(internal_memory) as 'avg_internal_memnory_capacity', avg(primary_camera_rear) as 'avg_primary_rear_camera' from ruchi.smartphones where price >=100000;
 select * from ruchi.smartphones;
 select count(*) from ruchi.smartphones where has_5g = 'True';
+select brand_name, avg(ram_capacity) as 'avg_ram' from ruchi.smartphones WHERE refresh_rate>90 and fast_charging_available=1 group by brand_name having count(*) >10 order by avg_ram desc LIMIT 3;
+select brand_name, avg(price) as 'avg_price' from ruchi.smartphones where has_nfc='True' group by brand_name having avg(rating) > 80 and count(*)>10;
+select batter, ID,
+sum(batter_runs) as 'score'
+from ruchi.ipl 
+group by batter, ID
+having score>=100
+order by batter DESC
+
+#find top 10 batsman with centuries in IPL
+
+select batter,sum(batsman_run) ,
+count(batsman_run),
+round((sum(batsman_run)/count(batsman_run))*100,2) as 'strike_rate'
+from ruchi.ipl
+group by batter
+having count(batsman_run)>1000
+order by strike_rate desc limit 5
+
+#find top 5 batsman with highest strike rate who have playeda min of 1000 balls
+
